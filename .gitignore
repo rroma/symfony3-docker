@@ -1,0 +1,35 @@
+/app/config/parameters.yml
+/build/
+/phpunit.xml
+/var/*
+!/var/cache
+/var/cache/*
+!var/cache/.gitkeep
+!/var/logs
+/var/logs/*
+!var/logs/.gitkeep
+!/var/sessions
+/var/sessions/*
+!var/sessions/.gitkeep
+!var/SymfonyRequirements.php
+/vendor/
+/vendor-web/
+/web/bundles/
+/web/uploads/
+/web/js/
+/web/css/
+/web/img/
+/web/fonts/
+/web/ckeditor/
+/node_modules/
+*~
+/.idea/*
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+
+# docker-compose
+/data
+.env

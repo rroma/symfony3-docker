@@ -1,0 +1,29 @@
+version: '2'
+services:
+  db:
+    image: mysql:5.6
+    volumes:
+      - ./data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_PASS}
+      - MYSQL_DATABASE=${DB_PASS}
+      - MYSQL_USER=${DB_USER}
+
+  app:
+    build:
+      args:
+        # Set UID and GID as for current host user in order allow
+        # all project files to be editable in both machine host and docker container
+        HOST_UID: ${HOST_UID}
+        HOST_GID: ${HOST_GID}
+      context: .
+    command: ./run.sh
+    entrypoint: /bin/sh
+    volumes:
+      - .:${PROJECT_ROOT}
+    environment:
+      - PROJECT_ROOT=${PROJECT_ROOT}
+    depends_on:
+      - db
+    ports:
+      - "80:3000"
